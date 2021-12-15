@@ -20,16 +20,18 @@ export default {
   //     error(e)
   //   }
   // },
-  async fetch({store, error}) {
-    try {
-      // await store.dispatch('users/fetchUsers')
-      if (store.getters['users/users'].length === 0) {
-        await store.dispatch('users/fetchUsers')
-      }
-    } catch (e) {
-      error(e)
-    }
-  },
+  
+  // async fetch({store, error}) {
+  //   try {
+  //     // await store.dispatch('users/fetchUsers')
+  //     if (store.getters['users/users'].length === 0) {
+  //       await store.dispatch('users/fetchUsers')
+  //     }
+  //   } catch (e) {
+  //     error(e)
+  //   }
+  // },
+  
   data() {
     return {
       pageTitle: 'Users page'
