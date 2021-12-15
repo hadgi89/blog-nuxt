@@ -12,10 +12,20 @@
 
 <script>
 export default {
-  async asyncData({store, error}) {
+  // async asyncData({store, error}) {
+  //   try {
+  //     await store.dispatch('users/fetchUsers')
+  //     return {}
+  //   } catch (e) {
+  //     error(e)
+  //   }
+  // },
+  async fetch({store, error}) {
     try {
-      const users = await store.dispatch('users/fetchUsers')
-      return {users}
+      // await store.dispatch('users/fetchUsers')
+      if (store.getters['users/users'].length === 0) {
+        await store.dispatch('users/fetchUsers')
+      }
     } catch (e) {
       error(e)
     }
@@ -23,6 +33,11 @@ export default {
   data() {
     return {
       pageTitle: 'Users page'
+    }
+  },
+  computed: {
+    users() {
+      return this.$store.getters['users/users']
     }
   },
   methods: {
